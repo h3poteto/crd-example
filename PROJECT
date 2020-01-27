@@ -1,3 +1,7 @@
 domain: h3poteto.dev
 repo: github.com/h3poteto/crd-example
+resources:
+- group: webapp
+  kind: MyKind
+  version: v1
 version: "2"
