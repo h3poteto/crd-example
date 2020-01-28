@@ -27,14 +27,22 @@ type MyKindSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of MyKind. Edit MyKind_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// +kubebuilder:validation:MaxLength=64
+	DeploymentName string `json:"deploymentName"`
+
+	// +optional
+	// +kubebuilder:validation:Minimum=0
+	Replicas *int32 `json:"replicas,omitempty"`
 }
 
 // MyKindStatus defines the observed state of MyKind
 type MyKindStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+
+	// +optional
+	// +kubebuilder:validation:Minimum=0
+	ReadyReplicas int32 `json:"redyReplicas,omitempty"`
 }
 
 // +kubebuilder:object:root=true
